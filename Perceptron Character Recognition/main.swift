@@ -23,7 +23,9 @@ if trainingHandle == nil {
     exit(EXIT_FAILURE)
 }
 
-print(trainingHandle!.getASCIILine()!)
+let firstLine = trainingHandle!.getASCIILine()!
+let firstLetter = Letter(withCommaSeparatedAttributeList: firstLine)
+print(firstLine)
 
 /*while let line = handle?.getLine() {
     NSLog("LINE: %s\n", line)
