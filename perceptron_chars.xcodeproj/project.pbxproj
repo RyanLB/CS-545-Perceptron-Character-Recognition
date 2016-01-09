@@ -63,6 +63,7 @@
 		741B51CC1C3F3A3C003455E4 /* Perceptron Character Recognition */ = {
 			isa = PBXGroup;
 			children = (
+				7463733E1C409CB20027E8B5 /* Controller */,
 				746373371C4088770027E8B5 /* Helpers */,
 				741B51CD1C3F3A3C003455E4 /* main.swift */,
 				741B51D81C3F7703003455E4 /* Model */,
@@ -85,6 +86,13 @@
 				746373381C4088880027E8B5 /* NSFileHandleExtension.swift */,
 			);
 			name = Helpers;
+			sourceTree = "<group>";
+		};
+		7463733E1C409CB20027E8B5 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
