@@ -72,8 +72,17 @@ class Perceptron {
         return try (bias + dotProduct(inputArray, secondArr: weights)) >= 0
     }
     
-    func testAccuracy(trainingData: [([Double], Bool)]) -> Int {
-        return trainingData.reduce(0, combine: {
+    /**
+     Tests the accuracy of this Perceptron on the given dataset.
+     
+     - Parameter data: A series of inputs, along with the desired outputs.
+     
+     - Returns: The number of examples for which this Perceptron's run() output matches the
+       desired output.
+     */
+    
+    func testAccuracy(data: [([Double], Bool)]) -> Int {
+        return data.reduce(0, combine: {
             let result = try? run($1.0)
             if result == $1.1 {
                 return $0 + 1
@@ -81,6 +90,54 @@ class Perceptron {
             
             return $0
         })
+    }
+    
+    /**
+     Trains this Perceptron using stochastic gradient descent.
+     
+     - Parameter trainingData: The traing dataset, which is an array of inputs and desired outputs.
+     
+     - Parameter learningRate: The rate by which to modify each weight during the gradient descent.
+     */
+    
+    func train(trainingData: [([Double], Bool)], learningRate: Double) {
+        var accuracy = testAccuracy(trainingData)
+        var delta: Int
+        
+        repeat {
+            let newPerceptron = epochResult(trainingData, learningRate: learningRate)
+            let newAccuracy = newPerceptron.testAccuracy(trainingData)
+            delta = newAccuracy - accuracy
+        
+            if delta >= 0 {
+                accuracy = newAccuracy
+                bias = newPerceptron.bias
+                weights = newPerceptron.weights
+            }
+        } while delta > 0
+    }
+    
+    /**
+     Executes a single training "epoch".
+     
+     - Returns: A new Perceptron with the resulting bias and weights that the training function
+       can use to determine whether or not to continue iterating.
+     */
+    private func epochResult(trainingData: [([Double], Bool)], learningRate: Double) -> Perceptron {
+        let resultPerceptron = Perceptron(withBias: self.bias, andWeights: self.weights)
+        
+        for instance in trainingData {
+            let result = try? resultPerceptron.run(instance.0)
+            
+            if result != instance.1 {
+                resultPerceptron.bias += learningRate * (instance.1 ? 1 : -1)
+                resultPerceptron.weights = zip(resultPerceptron.weights, instance.0).map{
+                    $0 + (learningRate * $1 * (instance.1 ? 1 : -1))
+                }
+            }
+        }
+        
+        return resultPerceptron
     }
     
 
