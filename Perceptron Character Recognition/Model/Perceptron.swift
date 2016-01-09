@@ -1,5 +1,5 @@
 //
-//  perceptron.swift
+//  Perceptron.swift
 //  Perceptron Character Recognition
 //
 //  Created by Ryan Bernstein on 1/7/16.

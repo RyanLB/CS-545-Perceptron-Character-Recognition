@@ -9,8 +9,8 @@
 /* Begin PBXBuildFile section */
 		741B51CE1C3F3A3C003455E4 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 741B51CD1C3F3A3C003455E4 /* main.swift */; };
 		746373391C4088880027E8B5 /* NSFileHandleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746373381C4088880027E8B5 /* NSFileHandleExtension.swift */; };
-		7463733C1C40935B0027E8B5 /* letter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7463733A1C40935B0027E8B5 /* letter.swift */; };
-		7463733D1C40935B0027E8B5 /* perceptron.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7463733B1C40935B0027E8B5 /* perceptron.swift */; };
+		7463733C1C40935B0027E8B5 /* Letter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7463733A1C40935B0027E8B5 /* Letter.swift */; };
+		7463733D1C40935B0027E8B5 /* Perceptron.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7463733B1C40935B0027E8B5 /* Perceptron.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -29,8 +29,8 @@
 		741B51CA1C3F3A3C003455E4 /* perceptron_chars */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = perceptron_chars; sourceTree = BUILT_PRODUCTS_DIR; };
 		741B51CD1C3F3A3C003455E4 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		746373381C4088880027E8B5 /* NSFileHandleExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSFileHandleExtension.swift; sourceTree = "<group>"; };
-		7463733A1C40935B0027E8B5 /* letter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = letter.swift; path = Model/letter.swift; sourceTree = "<group>"; };
-		7463733B1C40935B0027E8B5 /* perceptron.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = perceptron.swift; path = Model/perceptron.swift; sourceTree = "<group>"; };
+		7463733A1C40935B0027E8B5 /* Letter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Letter.swift; path = Model/Letter.swift; sourceTree = "<group>"; };
+		7463733B1C40935B0027E8B5 /* Perceptron.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Perceptron.swift; path = Model/Perceptron.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,8 +74,8 @@
 		741B51D81C3F7703003455E4 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				7463733A1C40935B0027E8B5 /* letter.swift */,
-				7463733B1C40935B0027E8B5 /* perceptron.swift */,
+				7463733A1C40935B0027E8B5 /* Letter.swift */,
+				7463733B1C40935B0027E8B5 /* Perceptron.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -153,8 +153,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				746373391C4088880027E8B5 /* NSFileHandleExtension.swift in Sources */,
-				7463733D1C40935B0027E8B5 /* perceptron.swift in Sources */,
-				7463733C1C40935B0027E8B5 /* letter.swift in Sources */,
+				7463733D1C40935B0027E8B5 /* Perceptron.swift in Sources */,
+				7463733C1C40935B0027E8B5 /* Letter.swift in Sources */,
 				741B51CE1C3F3A3C003455E4 /* main.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
