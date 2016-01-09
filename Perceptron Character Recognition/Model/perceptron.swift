@@ -83,10 +83,6 @@ class Perceptron {
         })
     }
     
-    func train(trainingData: [([Double], Bool)], learningRate: Double) {
-        
-    }
-    
 
     ///Generates a small random number between -1 and 1.
     
