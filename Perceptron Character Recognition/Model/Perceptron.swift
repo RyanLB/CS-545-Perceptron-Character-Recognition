@@ -35,7 +35,7 @@ class Perceptron {
         bias = Perceptron.smallRandom()
         
         var weightArray:[Double] = []
-        for _ in [0..<weightCount] {
+        for _ in 0..<weightCount {
             weightArray.append(Perceptron.smallRandom())
         }
         
