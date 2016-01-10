@@ -10,7 +10,7 @@ import Foundation
 
 print(Process.arguments[0])
 
-if Process.arguments.count < 2 {
+if Process.arguments.count < 3 {
     print("usage: perceptron_chars [training data path] [test data path]")
     exit(EXIT_FAILURE)
 }

@@ -11,6 +11,8 @@
 		746373391C4088880027E8B5 /* NSFileHandleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746373381C4088880027E8B5 /* NSFileHandleExtension.swift */; };
 		7463733C1C40935B0027E8B5 /* Letter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7463733A1C40935B0027E8B5 /* Letter.swift */; };
 		7463733D1C40935B0027E8B5 /* Perceptron.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7463733B1C40935B0027E8B5 /* Perceptron.swift */; };
+		746373401C41DD4E0027E8B5 /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7463733F1C41DD4E0027E8B5 /* Client.swift */; };
+		746373441C41DECD0027E8B5 /* LetterRecognitionNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746373431C41DECD0027E8B5 /* LetterRecognitionNetwork.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -31,6 +33,8 @@
 		746373381C4088880027E8B5 /* NSFileHandleExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSFileHandleExtension.swift; sourceTree = "<group>"; };
 		7463733A1C40935B0027E8B5 /* Letter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Letter.swift; path = Model/Letter.swift; sourceTree = "<group>"; };
 		7463733B1C40935B0027E8B5 /* Perceptron.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Perceptron.swift; path = Model/Perceptron.swift; sourceTree = "<group>"; };
+		7463733F1C41DD4E0027E8B5 /* Client.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Client.swift; sourceTree = "<group>"; };
+		746373431C41DECD0027E8B5 /* LetterRecognitionNetwork.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LetterRecognitionNetwork.swift; path = Model/LetterRecognitionNetwork.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,10 +67,10 @@
 		741B51CC1C3F3A3C003455E4 /* Perceptron Character Recognition */ = {
 			isa = PBXGroup;
 			children = (
-				7463733E1C409CB20027E8B5 /* Controller */,
 				746373371C4088770027E8B5 /* Helpers */,
 				741B51CD1C3F3A3C003455E4 /* main.swift */,
 				741B51D81C3F7703003455E4 /* Model */,
+				7463733F1C41DD4E0027E8B5 /* Client.swift */,
 			);
 			path = "Perceptron Character Recognition";
 			sourceTree = "<group>";
@@ -74,6 +78,7 @@
 		741B51D81C3F7703003455E4 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				746373431C41DECD0027E8B5 /* LetterRecognitionNetwork.swift */,
 				7463733A1C40935B0027E8B5 /* Letter.swift */,
 				7463733B1C40935B0027E8B5 /* Perceptron.swift */,
 			);
@@ -86,13 +91,6 @@
 				746373381C4088880027E8B5 /* NSFileHandleExtension.swift */,
 			);
 			name = Helpers;
-			sourceTree = "<group>";
-		};
-		7463733E1C409CB20027E8B5 /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -152,9 +150,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				746373441C41DECD0027E8B5 /* LetterRecognitionNetwork.swift in Sources */,
 				746373391C4088880027E8B5 /* NSFileHandleExtension.swift in Sources */,
 				7463733D1C40935B0027E8B5 /* Perceptron.swift in Sources */,
 				7463733C1C40935B0027E8B5 /* Letter.swift in Sources */,
+				746373401C41DD4E0027E8B5 /* Client.swift in Sources */,
 				741B51CE1C3F3A3C003455E4 /* main.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
