@@ -9,7 +9,6 @@
 import Foundation
 
 enum PerceptronError : ErrorType {
-    case InvalidLength(length: Int)
     case NonMatchingLengths(l1: Int, l2: Int)
 }
 
