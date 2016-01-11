@@ -12,6 +12,10 @@ extension NSFileHandle {
     func getASCIIChar() -> Character? {
         let byteData = readDataOfLength(1)
         
+        guard byteData.length > 0 else {
+            return nil
+        }
+        
         let dataString = String(data: byteData, encoding: NSASCIIStringEncoding)
         
         return dataString?[(dataString?.startIndex)!]

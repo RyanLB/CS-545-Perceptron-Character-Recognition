@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		740F3F151C44531200A84612 /* ConfusionMatrix.swift in Sources */ = {isa = PBXBuildFile; fileRef = 740F3F141C44531200A84612 /* ConfusionMatrix.swift */; };
+		740F3F171C445D8600A84612 /* NSArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 740F3F161C445D8600A84612 /* NSArrayExtension.swift */; };
 		741B51CE1C3F3A3C003455E4 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 741B51CD1C3F3A3C003455E4 /* main.swift */; };
 		746373391C4088880027E8B5 /* NSFileHandleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746373381C4088880027E8B5 /* NSFileHandleExtension.swift */; };
 		7463733C1C40935B0027E8B5 /* Letter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7463733A1C40935B0027E8B5 /* Letter.swift */; };
@@ -28,6 +30,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		740F3F141C44531200A84612 /* ConfusionMatrix.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ConfusionMatrix.swift; path = Model/ConfusionMatrix.swift; sourceTree = "<group>"; };
+		740F3F161C445D8600A84612 /* NSArrayExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSArrayExtension.swift; sourceTree = "<group>"; };
 		741B51CA1C3F3A3C003455E4 /* perceptron_chars */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = perceptron_chars; sourceTree = BUILT_PRODUCTS_DIR; };
 		741B51CD1C3F3A3C003455E4 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		746373381C4088880027E8B5 /* NSFileHandleExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSFileHandleExtension.swift; sourceTree = "<group>"; };
@@ -81,6 +85,7 @@
 				746373431C41DECD0027E8B5 /* LetterRecognitionNetwork.swift */,
 				7463733A1C40935B0027E8B5 /* Letter.swift */,
 				7463733B1C40935B0027E8B5 /* Perceptron.swift */,
+				740F3F141C44531200A84612 /* ConfusionMatrix.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -89,6 +94,7 @@
 			isa = PBXGroup;
 			children = (
 				746373381C4088880027E8B5 /* NSFileHandleExtension.swift */,
+				740F3F161C445D8600A84612 /* NSArrayExtension.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -150,11 +156,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				740F3F151C44531200A84612 /* ConfusionMatrix.swift in Sources */,
 				746373441C41DECD0027E8B5 /* LetterRecognitionNetwork.swift in Sources */,
 				746373391C4088880027E8B5 /* NSFileHandleExtension.swift in Sources */,
 				7463733D1C40935B0027E8B5 /* Perceptron.swift in Sources */,
 				7463733C1C40935B0027E8B5 /* Letter.swift in Sources */,
 				746373401C41DD4E0027E8B5 /* Client.swift in Sources */,
+				740F3F171C445D8600A84612 /* NSArrayExtension.swift in Sources */,
 				741B51CE1C3F3A3C003455E4 /* main.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
