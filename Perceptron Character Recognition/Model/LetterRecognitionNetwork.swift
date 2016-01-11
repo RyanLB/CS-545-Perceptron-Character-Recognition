@@ -31,7 +31,50 @@ class LetterRecognitionNetwork {
         }
     }
     
-    func perceptronFor(c1: Character, c2: Character) throws -> Perceptron {
+    func trainPerceptrons(trainingData: [Character: [Letter]], learningRate: Double) {
+        for c in trainingData.keys {
+            let ls: [Letter] = trainingData[c]!
+            
+            // TODO: Shuffle?
+            
+            for p in perceptronsWithFirstLetter(c) {
+                let tuples = ls.map({ (l: Letter) -> ([Double], Bool) in (l.attributeVector, false) })
+                p.train(tuples, learningRate: learningRate)
+            }
+            
+            for p in perceptronsWithSecondLetter(c) {
+                let tuples = ls.map({ (l: Letter) -> ([Double], Bool) in (l.attributeVector, true) })
+                p.train(tuples, learningRate: learningRate)
+            }
+        }
+    }
+    
+    func identify(letter: Letter) -> Character {
+        var results = [Character: Int]()
+        let letters = (65...90).map({Character(UnicodeScalar($0))})
+        for c in letters {
+            results[c] = 0
+        }
+        
+        for i in 65..<90 {
+            let c1 = Character(UnicodeScalar(i))
+            
+            for j in (i + 1)...90 {
+                let c2 = Character(UnicodeScalar(j))
+                
+                if let result = try? perceptronFor(c1, c2: c2).run(letter.attributeVector) ? c2 : c1 {
+                    ++results[result]!
+                }
+            }
+        }
+        
+        let winners = results.filter{ $0.1 == results.map{ $0.1 }.maxElement() }
+        
+        // Break ties by picking a random number between 0 and winners.count
+        return winners[Int(arc4random_uniform(UInt32(winners.count)))].0
+    }
+    
+    private func perceptronFor(c1: Character, c2: Character) throws -> Perceptron {
         guard c1 != c2 else {
             throw NeuralNetworkError.SelfComparison(c: c1)
         }
@@ -61,7 +104,7 @@ class LetterRecognitionNetwork {
         throw NeuralNetworkError.NotFoundError(c1: c1, c2: c2)
     }
     
-    func perceptronsContaining(c: Character) throws -> [Perceptron] {
+    private func perceptronsContaining(c: Character) throws -> [Perceptron] {
         let s = String(c).unicodeScalars
         let ord = s[s.startIndex].value
         
@@ -70,8 +113,51 @@ class LetterRecognitionNetwork {
         }
         
         let precedents = try (65..<ord).map{ try perceptronFor(Character(UnicodeScalar($0)), c2: c) }
-        let antecedents = try ((ord + 1)...90).map{ try perceptronFor(c, c2: Character(UnicodeScalar($0))) }
+        let descendents = try ((ord + 1)...90).map{ try perceptronFor(c, c2: Character(UnicodeScalar($0))) }
         
-        return precedents + antecedents
+        return precedents + descendents
     }
+    
+    private func perceptronsWithFirstLetter(c: Character) -> [Perceptron] {
+        let s = String(c).unicodeScalars
+        let ord = s[s.startIndex].value
+        
+        guard (65...90).contains(ord) else {
+            return []
+        }
+        
+        if let subNetwork = perceptronNetwork[c] {
+            var results = [Perceptron]()
+            for c2 in subNetwork.keys {
+                if let p = subNetwork[c2] {
+                    results.append(p)
+                }
+            }
+            return results
+        }
+        else {
+            return []
+        }
+    }
+    
+    private func perceptronsWithSecondLetter(c: Character) -> [Perceptron] {
+        let s = String(c).unicodeScalars
+        let ord = s[s.startIndex].value
+        
+        guard (65...90).contains(ord) else {
+            return []
+        }
+        
+        let precedents = (65..<ord).map{ Character(UnicodeScalar($0)) }
+        var results = [Perceptron]()
+        
+        for c2 in precedents {
+            if let p = perceptronNetwork[c2]?[c] {
+                results.append(p)
+            }
+        }
+        
+        return results
+    }
+    
 }
