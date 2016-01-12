@@ -32,6 +32,25 @@ class LetterRecognitionNetwork {
     }
     
     func trainPerceptrons(trainingData: [Character: [Letter]], learningRate: Double) {
+        //let letters = (65...90).map{ Character(UnicodeScalar($0)) }
+        for c1 in perceptronNetwork.keys {
+            let subNetwork = perceptronNetwork[c1]!
+            for c2 in subNetwork.keys {
+                
+                var relevantExamples = [([Double], Bool)]()
+                if let c1Examples = trainingData[c1] {
+                    relevantExamples += c1Examples.map({ (l: Letter) -> ([Double], Bool) in (l.attributeVector, false) } )
+                }
+                if let c2Examples = trainingData[c2] {
+                    relevantExamples += c2Examples.map({ (l: Letter) -> ([Double], Bool) in (l.attributeVector, true) } )
+                }
+                
+                relevantExamples.shuffle()
+                
+                _ = try? perceptronFor(c1, c2: c2).train(relevantExamples, learningRate: learningRate)
+            }
+        }
+        /*
         for c in trainingData.keys {
             let ls: [Letter] = trainingData[c]!
             
@@ -47,6 +66,7 @@ class LetterRecognitionNetwork {
                 p.train(tuples, learningRate: learningRate)
             }
         }
+        */
     }
     
     func identify(letter: Letter) -> Character {

@@ -19,11 +19,12 @@ let client = LetterRecognitionClient()
 try client.loadTrainingData(Process.arguments[1])
 try client.loadTestData(Process.arguments[2])
 
+/*
 print("Calculating initial accuracy...", separator: "")
 let initialMat = ConfusionMatrix(withData: client.getTestResults())
 print("Done.")
 print("Initial accuracy: ", initialMat.accuracy)
-
+*/
 print("Training perceptrons...", separator: "")
 client.trainNetwork()
 print("Done.")
