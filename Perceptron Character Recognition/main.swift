@@ -11,7 +11,7 @@ import Foundation
 print(Process.arguments[0])
 
 if Process.arguments.count < 3 {
-    print("usage: perceptron_chars [training data path] [test data path]")
+    print("usage: perceptron_chars training_path test_path [output_path]")
     exit(EXIT_FAILURE)
 }
 
@@ -33,3 +33,4 @@ print("Calculating final accuracy...", separator: "")
 let finalMat = ConfusionMatrix(withData: client.getTestResults())
 print("Done.")
 print("Final accuracy: ", finalMat.accuracy)
+print(finalMat.toCSVString())
