@@ -44,8 +44,6 @@ class LetterRecognitionNetwork {
                     relevantExamples += c2Examples.map({ (l: Letter) -> ([Double], Bool) in (l.attributeVector, true) } )
                 }
                 
-                relevantExamples.shuffle()
-                
                 _ = try? perceptronFor(c1, c2: c2).train(relevantExamples, learningRate: learningRate)
             }
         }

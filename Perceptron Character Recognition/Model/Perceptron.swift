@@ -104,7 +104,9 @@ class Perceptron {
         var delta: Int
         
         repeat {
-            let newPerceptron = epochResult(trainingData, learningRate: learningRate)
+            var shuffled = trainingData
+            shuffled.shuffle()
+            let newPerceptron = epochResult(shuffled, learningRate: learningRate)
             let newAccuracy = newPerceptron.testAccuracy(trainingData)
             delta = newAccuracy - accuracy
         
