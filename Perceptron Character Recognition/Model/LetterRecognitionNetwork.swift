@@ -55,24 +55,26 @@ class LetterRecognitionNetwork {
      - Returns: The letter with the highest number of "votes". Ties are broken via random number generation.
      */
     func identify(letter: Letter) -> Character {
-        var results = [Character: Int]()
-        let letters = (65...90).map({Character(UnicodeScalar($0))})
-        for c in letters {
-            results[c] = 0
-        }
+        var results = [Int](count: 26, repeatedValue: 0)
         
         for (c1, subnetwork) in perceptronNetwork {
             for (c2, p) in subnetwork {
                 if let result = try? p.run(letter.attributeVector) ? c2 : c1 {
-                    ++results[result]!
+                    ++results[charToAZIndex(result)]
                 }
             }
         }
 
-        let winners = results.filter{ $0.1 == results.map{ $0.1 }.maxElement() }
+        let winners = results.indicesOf{ $0 == results.maxElement() }
         
         // Break ties by picking a random number between 0 and winners.count
-        return winners[Int(arc4random_uniform(UInt32(winners.count)))].0
+        let winIndex = Int(arc4random_uniform(UInt32(winners.count)))
+        return Character(UnicodeScalar(winners[winIndex] + 65))
+    }
+    
+    private func charToAZIndex(c: Character) -> Int {
+        let s = String(c).unicodeScalars
+        return Int(s[s.startIndex].value) - 65
     }
     
     private func perceptronFor(c1: Character, c2: Character) throws -> Perceptron {
