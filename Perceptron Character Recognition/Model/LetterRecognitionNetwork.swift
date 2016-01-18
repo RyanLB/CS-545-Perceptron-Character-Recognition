@@ -49,6 +49,11 @@ class LetterRecognitionNetwork {
         }
     }
     
+    /**
+     Uses all-pairs classification to attempt to determine which letter this example represents.
+     
+     - Returns: The letter with the highest number of "votes". Ties are broken via random number generation.
+     */
     func identify(letter: Letter) -> Character {
         var results = [Character: Int]()
         let letters = (65...90).map({Character(UnicodeScalar($0))})
@@ -56,18 +61,14 @@ class LetterRecognitionNetwork {
             results[c] = 0
         }
         
-        for i in 65..<90 {
-            let c1 = Character(UnicodeScalar(i))
-            
-            for j in (i + 1)...90 {
-                let c2 = Character(UnicodeScalar(j))
-                
-                if let result = try? perceptronFor(c1, c2: c2).run(letter.attributeVector) ? c2 : c1 {
+        for (c1, subnetwork) in perceptronNetwork {
+            for (c2, p) in subnetwork {
+                if let result = try? p.run(letter.attributeVector) ? c2 : c1 {
                     ++results[result]!
                 }
             }
         }
-        
+
         let winners = results.filter{ $0.1 == results.map{ $0.1 }.maxElement() }
         
         // Break ties by picking a random number between 0 and winners.count
