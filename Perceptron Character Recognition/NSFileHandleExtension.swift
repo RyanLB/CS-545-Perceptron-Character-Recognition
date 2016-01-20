@@ -9,6 +9,11 @@
 import Foundation
 
 extension NSFileHandle {
+    /**
+     Gets a single ASCII-encoded character from the input stream.
+     
+     - Returns: The Character in question, or `nil` if no characters are available.
+     */
     func getASCIIChar() -> Character? {
         let byteData = readDataOfLength(1)
         
@@ -21,6 +26,11 @@ extension NSFileHandle {
         return dataString?[(dataString?.startIndex)!]
     }
     
+    /**
+     Gets an ASCII-encoded line from the input stream, delimited by `\n` or `EOF`.
+     
+     - Returns: The resulting String. Returns `nil` if no input was available or the line was empty.
+     */
     func getASCIILine() -> String? {
         var chars = ""
         

@@ -7,6 +7,7 @@
                 % TeX will automatically convert eps --> pdf in pdflatex  
 
 \usepackage{lscape}
+\usepackage{hyperref}
                 
 \setlength{\topmargin}{-0.5in}
 \setlength{\textheight}{9in}
@@ -19,6 +20,18 @@
 
 \begin{document}
 \maketitle
+
+This program classifies letters by using a network of 325 perceptrons and all-pairs classification. This network is implemented as a double-layer dictionary, which, is declared in Swift as follows:
+\begin{center}
+	\texttt{[Character: [Character: Perceptron]]}
+\end{center}
+That is to say, a dictionary mapping \texttt{Character}s to sub-dictionaries mapping \texttt{Character}s to Perceptron objects. The Perceptron that differentiates between the letters `A' and `B' is stored in \\\texttt{perceptronNetwork[``A''][``B'']}.
+
+I'm sure you've seen quite a lot of descriptions of this problem today, and I'm not exactly sure what you're looking for in this writeup, so if you want additional details, please do email me at \href{mailto:rlb3@pdx.edu}{rlb3@pdx.edu}.
+
+Using this method, accuracy generally ranges from around 68\% to around 73\%. Shuffling training data makes a huge difference --- without this step, accuracy sat at 5\%.
+
+An example confusion matrix is given below. The overall accuracy for this run is 71\%.
 
 \begingroup
 \fontsize{9pt}{9pt}\selectfont

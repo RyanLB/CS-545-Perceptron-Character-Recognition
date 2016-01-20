@@ -109,8 +109,9 @@ class Perceptron {
             let newPerceptron = epochResult(shuffled, learningRate: learningRate)
             let newAccuracy = newPerceptron.testAccuracy(trainingData)
             delta = newAccuracy - accuracy
-        
-            if delta >= 0 {
+            
+            // Update weights if accuracy would improve
+            if delta > 0 {
                 accuracy = newAccuracy
                 bias = newPerceptron.bias
                 weights = newPerceptron.weights
@@ -130,6 +131,7 @@ class Perceptron {
         for instance in trainingData {
             let result = try? resultPerceptron.run(instance.0)
             
+            // Update new weights if our result was incorrect
             if result != instance.1 {
                 resultPerceptron.bias += learningRate * (instance.1 ? 1 : -1)
                 resultPerceptron.weights = zip(resultPerceptron.weights, instance.0).map{

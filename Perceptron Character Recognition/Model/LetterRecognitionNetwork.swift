@@ -31,6 +31,14 @@ class LetterRecognitionNetwork {
         }
     }
     
+    /**
+     Trains all Perceptrons in the network.
+     
+     - Parameter trainingData: A dictionary mapping Characters to the Letter objects representing
+       those Characters.
+     
+     - Parameter learningRate: The rate by which we should update Perceptron weights.
+     */
     func trainPerceptrons(trainingData: [Character: [Letter]], learningRate: Double) {
         for (c1, subNetwork) in perceptronNetwork {
             for (c2, p) in subNetwork {
@@ -64,7 +72,7 @@ class LetterRecognitionNetwork {
             }
         }
 
-        let winners = results.indicesOf{ $0 == results.maxElement() }
+        let winners = results.indicesWhere{ $0 == results.maxElement() }
         
         // Break ties by picking a random number between 0 and winners.count
         let winIndex = Int(arc4random_uniform(UInt32(winners.count)))

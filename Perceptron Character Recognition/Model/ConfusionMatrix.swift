@@ -50,7 +50,9 @@ class ConfusionMatrix {
         return str
     }
     
-    
+    /**
+     Converts a character to its ASCII ordinal.
+     */
     private func charToASCII(c: Character) -> Int {
         let s = String(c).unicodeScalars
         return Int(s[s.startIndex].value)

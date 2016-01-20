@@ -24,7 +24,7 @@ extension Array {
     /**
      Returns the indices of all elements that satisfy the given predicate.
      */
-    func indicesOf(predicate: Element -> Bool) -> [Int] {
+    func indicesWhere(predicate: Element -> Bool) -> [Int] {
         var results = [Int]()
         
         for i in 0..<self.count {
